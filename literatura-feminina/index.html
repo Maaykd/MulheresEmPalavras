@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ministério das Mulheres - Acervo Literário Feminino</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header Navigation -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <!-- Logo and Title -->
+                <div class="header-brand">
+                    <div class="logo">
+                        <span>M</span>
+                    </div>
+                    <div class="brand-text">
+                        <h1>Ministério das Mulheres</h1>
+                        <p>Acervo Literário Feminino</p>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <nav class="nav-desktop">
+                    <a href="index.html" class="nav-link active">Início</a>
+                    <a href="autoras.html" class="nav-link">Todas as Autoras</a>
+                    <a href="obras.html" class="nav-link">Todas as Obras</a>
+                    <a href="https://forms.office.com/Pages/DesignPageV2.aspx?origin=NeoPortalPage&subpage=design&id=eLGl-_E6IESWa79RY-ax2m3ke_MyDQ5Goc-3jD5vE_1UMUhWN1E5RlNYUDI5S041SjU0S0dOMzlHVy4u" 
+                       class="btn-request" target="_blank">
+                        <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="22" y1="2" x2="11" y2="13"></line>
+                            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                        </svg>
+                        Solicitar Livro
+                    </a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <svg class="menu-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                    <svg class="close-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: none;">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <nav class="nav-mobile" id="mobileNav">
+                <a href="index.html" class="nav-link active">Início</a>
+                <a href="autoras.html" class="nav-link">Todas as Autoras</a>
+                <a href="obras.html" class="nav-link">Todas as Obras</a>
+                <a href="https://forms.office.com/Pages/DesignPageV2.aspx?origin=NeoPortalPage&subpage=design&id=eLGl-_E6IESWa79RY-ax2m3ke_MyDQ5Goc-3jD5vE_1UMUhWN1E5RlNYUDI5S041SjU0S0dOMzlHVy4u" 
+                   class="btn-request" target="_blank">Solicitar Livro</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-bg-pattern"></div>
+        <div class="floating-element floating-1"></div>
+        <div class="floating-element floating-2"></div>
+        <div class="floating-element floating-3"></div>
+        
+        <div class="container hero-content">
+            <div class="hero-icon">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                </svg>
+            </div>
+            
+            <h1 class="hero-title">
+                <span class="gradient-text">Acervo Literário</span>
+                <br>
+                <span class="subtitle">Feminino Brasileiro</span>
+            </h1>
+            
+            <p class="hero-description">
+                Uma celebração da literatura feminina contemporânea, reunindo mais de 
+                <strong>55 obras</strong> de <strong>42+ autoras brasileiras</strong> 
+                que transformam palavras em revolução
+            </p>
+            
+            <div class="hero-actions">
+                <button class="btn-primary" onclick="scrollToSection('featured-books')">
+                    <svg class="sparkles-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 3l1.912 5.813a2 2 0 0 0 1.275 1.275L21 12l-5.813 1.912a2 2 0 0 0-1.275 1.275L12 21l-1.912-5.813a2 2 0 0 0-1.275-1.275L3 12l5.813-1.912a2 2 0 0 0 1.275-1.275L12 3z"></path>
+                    </svg>
+                    Explorar Acervo
+                </button>
+                <div class="status-badge">
+                    <span class="status-dot"></span>
+                    <span>Atualizado em 2025</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Nossa Coleção em Números</h2>
+                <p>Um panorama da riqueza literária feminina brasileira contemporânea</p>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon purple">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                        </svg>
+                    </div>
+                    <div class="stat-number">55+</div>
+                    <div class="stat-label">Obras Catalogadas</div>
+                    <div class="stat-description">Literatura contemporânea</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon yellow">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                    </div>
+                    <div class="stat-number">42+</div>
+                    <div class="stat-label">Autoras Brasileiras</div>
+                    <div class="stat-description">Vozes femininas únicas</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon purple-dark">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="16" y1="2" x2="16" y2="6"></line>
+                            <line x1="8" y1="2" x2="8" y2="6"></line>
+                            <line x1="3" y1="10" x2="21" y2="10"></line>
+                        </svg>
+                    </div>
+                    <div class="stat-number">2024</div>
+                    <div class="stat-label">Última Atualização</div>
+                    <div class="stat-description">Acervo sempre atual</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon green">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                        </svg>
+                    </div>
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Acesso Gratuito</div>
+                    <div class="stat-description">Democratização cultural</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Books Section -->
+    <section class="featured-section" id="featured-books">
+        <div class="container">
+            <div class="section-header">
+                <h2>Obras em Destaque</h2>
+                <p>Conheça algumas das obras mais representativas do nosso acervo</p>
+                <a href="obras.html" class="link-arrow">
+                    Ver Todas as Obras
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </a>
+            </div>
+            
+            <div class="books-grid" id="featuredBooksGrid">
+                <!-- Books will be loaded here via JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-content">
+                    <h2>Nossa Missão</h2>
+                    <p class="about-lead">
+                        O Ministério das Mulheres dedica-se a promover e preservar a rica tradição 
+                        literária feminina brasileira, oferecendo uma plataforma que celebra a 
+                        diversidade de vozes e perspectivas das autoras contemporâneas.
+                    </p>
+                    <p class="about-text">
+                        Nosso acervo representa não apenas obras literárias, mas um movimento de 
+                        empoderamento e reconhecimento da contribuição fundamental das mulheres 
+                        para a cultura e sociedade brasileira.
+                    </p>
+                    
+                    <div class="values-grid">
+                        <div class="value-item">
+                            <div class="value-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4>Valorização Feminina</h4>
+                                <p>Promovemos e celebramos as vozes únicas das mulheres na literatura brasileira.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="value-item">
+                            <div class="value-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                                    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4>Acesso à Cultura</h4>
+                                <p>Democratizamos o acesso à literatura feminina de qualidade para todos.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="value-item">
+                            <div class="value-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="9" cy="7" r="4"></circle>
+                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4>Comunidade Literária</h4>
+                                <p>Criamos conexões entre leitores e autoras, fortalecendo nossa comunidade.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="value-item">
+                            <div class="value-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <line x1="12" y1="8" x2="12" y2="12"></line>
+                                    <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4>Impacto Social</h4>
+                                <p>Contribuímos para a transformação social através da literatura consciente.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="about-image">
+                    <div class="image-placeholder">
+                        <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Explore Nosso Acervo Completo</h2>
+                <p>Descubra as vozes poderosas da literatura feminina brasileira contemporânea</p>
+                <div class="cta-buttons">
+                    <a href="autoras.html" class="btn-white">Conhecer Autoras</a>
+                    <a href="obras.html" class="btn-outline">Ver Todas as Obras</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <span>M</span>
+                    </div>
+                    <h3>Ministério das Mulheres</h3>
+                    <p>Celebrando a literatura feminina brasileira</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Links Rápidos</h4>
+                    <a href="index.html">Início</a>
+                    <a href="autoras.html">Autoras</a>
+                    <a href="obras.html">Obras</a>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4>Contato</h4>
+                    <a href="https://forms.office.com/Pages/DesignPageV2.aspx?origin=NeoPortalPage&subpage=design&id=eLGl-_E6IESWa79RY-ax2m3ke_MyDQ5Goc-3jD5vE_1UMUhWN1E5RlNYUDI5S041SjU0S0dOMzlHVy4u" 
+                       target="_blank">Solicitar Livro</a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Ministério das Mulheres. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Book Modal -->
+    <div id="bookModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeBookModal()">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <div id="bookModalContent">
+                <!-- Book details will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="js/data.js"></script>
+    <script src="js/components.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
