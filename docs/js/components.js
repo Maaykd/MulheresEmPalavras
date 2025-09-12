@@ -99,7 +99,6 @@ function initLazyLoading() {
     document.querySelectorAll('img[data-src]').forEach(img => {
         imageObserver.observe(img);
     });
-    
 }
 
 // ===== Copy to Clipboard =====
@@ -321,7 +320,6 @@ function printBookDetails(book) {
                 <p><strong>Ano:</strong> ${book.year}</p>
                 <p><strong>Gênero:</strong> ${book.genre}</p>
                 <p><strong>Disponibilidade:</strong> ${book.availability}</p>
-                ${book.price ? `<p><strong>Preço:</strong> ${formatCurrency(book.price)}</p>` : ''}
             </div>
             <h2>Sinopse</h2>
             <div class="synopsis">${book.synopsis}</div>

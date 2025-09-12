@@ -8,6 +8,7 @@ let modalOpen = false;
 // ===== Initialize App =====
 document.addEventListener('DOMContentLoaded', function() {
     initializeApp();
+    setupImageErrorHandlers();
 });
 
 function initializeApp() {
@@ -28,6 +29,33 @@ function initializeApp() {
     } else if (path.includes('obras')) {
         currentPage = 'obras';
         loadAllBooks();
+    }
+}
+
+// ===== Image Error Handler =====
+function setupImageErrorHandlers() {
+    // Set up global image error handling
+    document.addEventListener('error', function(e) {
+        if (e.target.tagName === 'IMG') {
+            handleImageError(e.target);
+        }
+    }, true);
+}
+
+function handleImageError(img) {
+    // Hide the broken image
+    img.style.display = 'none';
+    
+    // Show placeholder if it exists
+    const placeholder = img.nextElementSibling;
+    if (placeholder && placeholder.classList.contains('book-cover-placeholder')) {
+        placeholder.style.display = 'flex';
+    }
+    
+    // For modal images
+    const modalPlaceholder = img.parentElement.querySelector('.book-modal-cover-placeholder');
+    if (modalPlaceholder) {
+        modalPlaceholder.style.display = 'flex';
     }
 }
 
@@ -116,15 +144,20 @@ function createBookCard(book) {
     const genreClass = getGenreClass(book.genre);
     const availabilityClass = book.availability === 'Disponível' ? 'available' : 'unavailable';
     
+    // Verifica se a imagem existe e se o link não está quebrado
+    const imageUrl = book.image_url && book.image_url.startsWith('http') ? book.image_url : null;
+    const hasImage = !!imageUrl;
+
     return `
         <div class="book-card" onclick="openBookModal(${books.indexOf(book)})" data-aos="fade-up">
             <div class="book-cover">
-                ${book.image_url ? 
-                    `<img src="${book.image_url}" alt="${book.title}">` :
-                    `<div class="book-cover-placeholder">
-                        <span>${book.title.charAt(0)}</span>
-                    </div>`
+                ${hasImage ? 
+                    `<img src="${imageUrl}" alt="${book.title}" onerror="this.classList.add('hide-image'); this.nextElementSibling.style.display='flex';">` :
+                    ''
                 }
+                <div class="book-cover-placeholder" style="display: ${hasImage ? 'none' : 'flex'};">
+                    <span>${book.title.charAt(0)}</span>
+                </div>
                 <span class="book-genre-badge ${genreClass}">${book.genre}</span>
             </div>
             <div class="book-info">

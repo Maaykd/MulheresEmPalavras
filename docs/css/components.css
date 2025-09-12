@@ -64,6 +64,7 @@
     font-weight: bold;
     color: var(--purple-400);
     font-family: var(--font-serif);
+    text-transform: uppercase;
 }
 
 .book-genre-badge {
