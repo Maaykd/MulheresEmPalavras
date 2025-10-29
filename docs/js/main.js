@@ -139,7 +139,7 @@ function loadFeaturedBooks() {
     animateElements('.book-card');
 }
 
-// ===== Book Card Component =====
+// ===== Book Card Component - ATUALIZADO COM BOTÃO =====
 function createBookCard(book) {
     const genreClass = getGenreClass(book.genre);
     const availabilityClass = book.availability === 'Disponível' ? 'available' : 'unavailable';
@@ -149,8 +149,8 @@ function createBookCard(book) {
     const hasImage = !!imageUrl;
 
     return `
-        <div class="book-card" onclick="openBookModal(${books.indexOf(book)})" data-aos="fade-up">
-            <div class="book-cover">
+        <div class="book-card" data-aos="fade-up">
+            <div class="book-cover" onclick="openBookModal(${books.indexOf(book)})">
                 ${hasImage ? 
                     `<img src="${imageUrl}" alt="${book.title}" onerror="this.classList.add('hide-image'); this.nextElementSibling.style.display='flex';">` :
                     ''
@@ -161,7 +161,7 @@ function createBookCard(book) {
                 <span class="book-genre-badge ${genreClass}">${book.genre}</span>
             </div>
             <div class="book-info">
-                <h3 class="book-title">${book.title}</h3>
+                <h3 class="book-title" onclick="openBookModal(${books.indexOf(book)})">${book.title}</h3>
                 <p class="book-author">${book.author}</p>
                 <div class="book-year">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -173,9 +173,21 @@ function createBookCard(book) {
                     ${book.year}
                 </div>
                 <p class="book-synopsis">${book.synopsis}</p>
-                <span class="book-availability availability-${availabilityClass}">
-                    ${book.availability}
-                </span>
+                <div class="book-bottom">
+                    <span class="book-availability availability-${availabilityClass}">
+                        ${book.availability}
+                    </span>
+                    <a href="https://forms.office.com/Pages/DesignPageV2.aspx?origin=NeoPortalPage&subpage=design&id=eLGl-_E6IESWa79RY-ax2m3ke_MyDQ5Goc-3jD5vE_1UMUhWN1E5RlNYUDI5S041SjU0S0dOMzlHVy4u" 
+                       target="_blank" 
+                       class="btn-request-book"
+                       onclick="event.stopPropagation()">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="22" y1="2" x2="11" y2="13"></line>
+                            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                        </svg>
+                        Solicitar
+                    </a>
+                </div>
             </div>
         </div>
     `;
@@ -240,16 +252,14 @@ function openBookModal(bookIndex) {
                 </span>
             </div>
             <div class="book-modal-actions">
-                ${book.library_url ? 
-                    `<a href="${book.library_url}" target="_blank" class="btn-library">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                            <polyline points="15 3 21 3 21 9"></polyline>
-                            <line x1="10" y1="14" x2="21" y2="3"></line>
-                        </svg>
-                        Ver na Biblioteca
-                    </a>` : ''
-                }
+                <a href="https://forms.office.com/Pages/DesignPageV2.aspx?origin=NeoPortalPage&subpage=design&id=eLGl-_E6IESWa79RY-ax2m3ke_MyDQ5Goc-3jD5vE_1UMUhWN1E5RlNYUDI5S041SjU0S0dOMzlHVy4u" 
+                   target="_blank" class="btn-library">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    </svg>
+                    Solicitar Livro
+                </a>
             </div>
         </div>
     `;

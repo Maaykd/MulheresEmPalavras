@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel de Administração - Ministério das Mulheres</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header Navigation -->
+    <header class="header admin-header">
+        <div class="container">
+            <div class="header-content">
+                <!-- Logo and Title -->
+                <div class="header-brand">
+                    <div class="logo admin-logo">
+                        <span>A</span>
+                    </div>
+                    <div class="brand-text">
+                        <h1>Painel Administrativo</h1>
+                        <p>Ministério das Mulheres</p>
+                    </div>
+                </div>
+
+                <!-- Admin Actions -->
+                <div class="admin-actions">
+                    <!-- Info do usuário logado -->
+                    <div class="user-info">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                        <span id="currentUser">Admin</span>
+                    </div>
+                        
+                    
+                    <button class="btn-admin" onclick="saveChanges()">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+                            <polyline points="17 21 17 13 7 13 7 21"></polyline>
+                            <polyline points="7 3 7 8 15 8"></polyline>
+                        </svg>
+                        Salvar Alterações
+                    </button>
+                    <button class="btn-warning" onclick="resetData()">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="23 4 23 10 17 10"></polyline>
+                            <polyline points="1 20 1 14 7 14"></polyline>
+                            <path d="m3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+                        </svg>
+                        Restaurar Original
+                    </button>
+                    <a href="index.html" class="btn-secondary">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                        </svg>
+                        Voltar ao Site
+                    </a>
+                    <button class="btn-logout" onclick="logout()">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                            <polyline points="16 17 21 12 16 7"></polyline>
+                            <line x1="21" y1="12" x2="9" y2="12"></line>
+                        </svg>
+                        Logout
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Admin Dashboard -->
+    <section class="admin-dashboard">
+        <div class="container">
+            <!-- Dashboard Stats -->
+            <div class="admin-stats">
+                <div class="stat-card available">
+                    <div class="stat-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="9 11 12 14 22 4"></polyline>
+                            <path d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9c1.23 0 2.4.25 3.47.7"></path>
+                        </svg>
+                    </div>
+                    <div class="stat-info">
+                        <div class="stat-number" id="availableCount">0</div>
+                        <div class="stat-label">Disponíveis</div>
+                    </div>
+                </div>
+                
+                <div class="stat-card unavailable">
+                    <div class="stat-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="15" y1="9" x2="9" y2="15"></line>
+                            <line x1="9" y1="9" x2="15" y2="15"></line>
+                        </svg>
+                    </div>
+                    <div class="stat-info">
+                        <div class="stat-number" id="unavailableCount">0</div>
+                        <div class="stat-label">Indisponíveis</div>
+                    </div>
+                </div>
+                
+                <div class="stat-card total">
+                    <div class="stat-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                        </svg>
+                    </div>
+                    <div class="stat-info">
+                        <div class="stat-number" id="totalCount">0</div>
+                        <div class="stat-label">Total de Obras</div>
+                    </div>
+                </div>
+                
+                <div class="stat-card changes">
+                    <div class="stat-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
+                        </svg>
+                    </div>
+                    <div class="stat-info">
+                        <div class="stat-number" id="changesCount">0</div>
+                        <div class="stat-label">Alterações Pendentes</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Search and Filters -->
+            <div class="admin-filters">
+                <div class="search-box">
+                    <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
+                    <input 
+                        type="text" 
+                        class="search-input" 
+                        placeholder="Buscar por título ou autora..."
+                        id="adminSearch"
+                        onkeyup="filterBooks()"
+                    >
+                </div>
+                
+                <select class="filter-select" id="statusFilter" onchange="filterBooks()">
+                    <option value="all">Todos os Status</option>
+                    <option value="available">Disponíveis</option>
+                    <option value="unavailable">Indisponíveis</option>
+                </select>
+                
+                <select class="filter-select" id="genreFilter" onchange="filterBooks()">
+                    <option value="all">Todos os Gêneros</option>
+                    <option value="Romance">Romance</option>
+                    <option value="Poesia">Poesia</option>
+                    <option value="Ficção">Ficção</option>
+                    <option value="Biografia">Biografia</option>
+                    <option value="Suspense">Suspense</option>
+                    <option value="Crônica">Crônica</option>
+                </select>
+
+                <div class="bulk-actions">
+                    <button class="btn-bulk" onclick="bulkAction('available')">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="9 11 12 14 22 4"></polyline>
+                            <path d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9c1.23 0 2.4.25 3.47.7"></path>
+                        </svg>
+                        Tornar Disponíveis
+                    </button>
+                    <button class="btn-bulk" onclick="bulkAction('unavailable')">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="15" y1="9" x2="9" y2="15"></line>
+                            <line x1="9" y1="9" x2="15" y2="15"></line>
+                        </svg>
+                        Tornar Indisponíveis
+                    </button>
+                </div>
+            </div>
+
+            <!-- Books Management Table -->
+            <div class="admin-table-container">
+                <table class="admin-table" id="booksTable">
+                    <thead>
+                        <tr>
+                            <th>
+                                <input type="checkbox" id="selectAll" onchange="toggleSelectAll()">
+                            </th>
+                            <th>Título</th>
+                            <th>Autora</th>
+                            <th>Gênero</th>
+                            <th>Ano</th>
+                            <th>Status Atual</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="booksTableBody">
+                        <!-- Books will be loaded here -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- No Results -->
+            <div class="no-results" id="noResults" style="display: none;">
+                <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.35-4.35"></path>
+                </svg>
+                <h3>Nenhuma obra encontrada</h3>
+                <p>Tente ajustar os filtros de busca</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success/Error Messages -->
+    <div id="messageContainer" class="message-container">
+        <!-- Messages will be shown here -->
+    </div>
+
+    <style>
+        /* Admin Specific Styles */
+        .admin-header {
+            background: linear-gradient(135deg, #1e293b, #334155);
+            border-bottom: 2px solid #475569;
+        }
+
+        .admin-logo {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+        }
+
+        .admin-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.875rem;
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+        }
+
+        .btn-logout {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(135deg, #dc2626, #b91c1c);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-logout:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(220, 38, 38, 0.3);
+        }
+
+        .btn-admin {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-admin:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3);
+        }
+
+        .btn-warning {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-warning:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(245, 158, 11, 0.3);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .admin-dashboard {
+            padding: 3rem 0;
+            background: linear-gradient(to bottom, #f8fafc, #e2e8f0);
+            min-height: calc(100vh - 100px);
+        }
+
+        .admin-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-card.available .stat-icon {
+            background: rgba(16, 185, 129, 0.1);
+            color: #10b981;
+        }
+
+        .stat-card.unavailable .stat-icon {
+            background: rgba(239, 68, 68, 0.1);
+            color: #ef4444;
+        }
+
+        .stat-card.total .stat-icon {
+            background: rgba(139, 92, 246, 0.1);
+            color: #8b5cf6;
+        }
+
+        .stat-card.changes .stat-icon {
+            background: rgba(245, 158, 11, 0.1);
+            color: #f59e0b;
+        }
+
+        .stat-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #1e293b;
+        }
+
+        .stat-label {
+            color: #64748b;
+            font-size: 0.875rem;
+        }
+
+        .admin-filters {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2rem;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .bulk-actions {
+            display: flex;
+            gap: 0.5rem;
+            margin-left: auto;
+        }
+
+        .btn-bulk {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border: 1px solid #d1d5db;
+            background: white;
+            color: #374151;
+            border-radius: 6px;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-bulk:hover {
+            background: #f9fafb;
+            border-color: #9ca3af;
+        }
+
+        .admin-table-container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+
+        .admin-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .admin-table th {
+            background: #f8fafc;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            color: #374151;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .admin-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #f3f4f6;
+            vertical-align: middle;
+        }
+
+        .admin-table tr:hover {
+            background: #f9fafb;
+        }
+
+        .book-title {
+            font-weight: 600;
+            color: #1e293b;
+            max-width: 200px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .book-author {
+            color: #64748b;
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .status-badge.available {
+            background: rgba(16, 185, 129, 0.1);
+            color: #10b981;
+        }
+
+        .status-badge.unavailable {
+            background: rgba(239, 68, 68, 0.1);
+            color: #ef4444;
+        }
+
+        .status-toggle {
+            position: relative;
+            width: 48px;
+            height: 24px;
+            background: #e5e7eb;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .status-toggle.active {
+            background: #10b981;
+        }
+
+        .status-toggle::after {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .status-toggle.active::after {
+            transform: translateX(24px);
+        }
+
+        .message-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .message {
+            padding: 1rem 1.5rem;
+            margin-bottom: 0.5rem;
+            border-radius: 8px;
+            color: white;
+            font-weight: 500;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transform: translateX(400px);
+            transition: all 0.3s ease;
+        }
+
+        .message.show {
+            transform: translateX(0);
+        }
+
+        .message.success {
+            background: #10b981;
+        }
+
+        .message.error {
+            background: #ef4444;
+        }
+
+        .message.warning {
+            background: #f59e0b;
+        }
+
+        @media (max-width: 768px) {
+            .admin-actions {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .admin-filters {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .bulk-actions {
+                margin-left: 0;
+                justify-content: center;
+            }
+
+            .admin-table-container {
+                overflow-x: auto;
+            }
+
+            .admin-table {
+                min-width: 800px;
+            }
+        }
+
+        /* Changes indicator */
+        .has-changes {
+            background-color: rgba(245, 158, 11, 0.05) !important;
+            border-left: 3px solid #f59e0b;
+        }
+        
+        .genre-badge {
+            padding: 0.25rem 0.5rem;
+            background: #f3f4f6;
+            color: #374151;
+            border-radius: 4px;
+            font-size: 0.75rem;
+        }
+    </style>
+
+    <script src="js/data.js"></script>
+    <script src="js/components.js"></script>
+    <script src="auth.js"></script>
+    <script>
+        // Admin Panel State
+        let booksData = [...books];
+        let filteredBooks = [...books];
+        let pendingChanges = new Map();
+        let selectedBooks = new Set();
+
+        // Initialize Admin Panel
+        document.addEventListener('DOMContentLoaded', function() {
+            // Verificar autenticação primeiro
+            if (!isAuthenticated()) {
+                return; // O auth.js já vai redirecionar
+            }
+            
+            // Mostrar usuário logado
+            const currentUser = getCurrentUser();
+            const userElement = document.getElementById('currentUser');
+            if (userElement && currentUser) {
+                userElement.textContent = currentUser;
+            }
+            
+            loadBooksTable();
+            updateStats();
+        });
+
+        // Load books into admin table
+        function loadBooksTable() {
+            const tbody = document.getElementById('booksTableBody');
+            const noResults = document.getElementById('noResults');
+            
+            if (filteredBooks.length === 0) {
+                tbody.innerHTML = '';
+                noResults.style.display = 'block';
+                return;
+            }
+            
+            noResults.style.display = 'none';
+            
+            tbody.innerHTML = filteredBooks.map((book, index) => {
+                const currentStatus = pendingChanges.has(book.id) ? pendingChanges.get(book.id) : book.availability;
+                const isAvailable = currentStatus === 'Disponível';
+                const hasChanges = pendingChanges.has(book.id);
+                
+                return `
+                    <tr class="${hasChanges ? 'has-changes' : ''}">
+                        <td>
+                            <input type="checkbox" 
+                                   value="${book.id}" 
+                                   onchange="toggleBookSelection(${book.id})"
+                                   ${selectedBooks.has(book.id) ? 'checked' : ''}>
+                        </td>
+                        <td>
+                            <div class="book-title" title="${book.title}">${book.title}</div>
+                        </td>
+                        <td>
+                            <div class="book-author">${book.author}</div>
+                        </td>
+                        <td>
+                            <span class="genre-badge">${book.genre}</span>
+                        </td>
+                        <td>${book.year}</td>
+                        <td>
+                            <span class="status-badge ${isAvailable ? 'available' : 'unavailable'}">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    ${isAvailable ? 
+                                        '<polyline points="9 11 12 14 22 4"></polyline><path d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9c1.23 0 2.4.25 3.47.7"></path>' :
+                                        '<circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line>'
+                                    }
+                                </svg>
+                                ${currentStatus}
+                                ${hasChanges ? '<span style="color: #f59e0b;">*</span>' : ''}
+                            </span>
+                        </td>
+                        <td>
+                            <div class="status-toggle ${isAvailable ? 'active' : ''}" 
+                                 onclick="toggleBookStatus(${book.id})"
+                                 title="Clique para alternar status"></div>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        // Toggle book status
+        function toggleBookStatus(bookId) {
+            const book = books.find(b => b.id === bookId);
+            if (!book) return;
+            
+            const currentStatus = pendingChanges.has(bookId) ? pendingChanges.get(bookId) : book.availability;
+            const newStatus = currentStatus === 'Disponível' ? 'Indisponível' : 'Disponível';
+            
+            pendingChanges.set(bookId, newStatus);
+            loadBooksTable();
+            updateStats();
+            
+            showMessage(`Status de "${book.title}" alterado para ${newStatus}`, 'success');
+        }
+
+        // Toggle book selection
+        function toggleBookSelection(bookId) {
+            if (selectedBooks.has(bookId)) {
+                selectedBooks.delete(bookId);
+            } else {
+                selectedBooks.add(bookId);
+            }
+            updateSelectAllCheckbox();
+        }
+
+        // Toggle select all
+        function toggleSelectAll() {
+            const selectAllCheckbox = document.getElementById('selectAll');
+            const checkboxes = document.querySelectorAll('tbody input[type="checkbox"]');
+            
+            if (selectAllCheckbox.checked) {
+                checkboxes.forEach(checkbox => {
+                    const bookId = parseInt(checkbox.value);
+                    selectedBooks.add(bookId);
+                    checkbox.checked = true;
+                });
+            } else {
+                selectedBooks.clear();
+                checkboxes.forEach(checkbox => {
+                    checkbox.checked = false;
+                });
+            }
+        }
+
+        // Update select all checkbox state
+        function updateSelectAllCheckbox() {
+            const selectAllCheckbox = document.getElementById('selectAll');
+            const visibleBooks = filteredBooks.map(b => b.id);
+            const selectedVisibleBooks = visibleBooks.filter(id => selectedBooks.has(id));
+            
+            if (selectedVisibleBooks.length === 0) {
+                selectAllCheckbox.checked = false;
+                selectAllCheckbox.indeterminate = false;
+            } else if (selectedVisibleBooks.length === visibleBooks.length) {
+                selectAllCheckbox.checked = true;
+                selectAllCheckbox.indeterminate = false;
+            } else {
+                selectAllCheckbox.checked = false;
+                selectAllCheckbox.indeterminate = true;
+            }
+        }
+
+        // Bulk actions
+        function bulkAction(action) {
+            if (selectedBooks.size === 0) {
+                showMessage('Selecione pelo menos uma obra para aplicar ação em lote', 'warning');
+                return;
+            }
+            
+            const newStatus = action === 'available' ? 'Disponível' : 'Indisponível';
+            const count = selectedBooks.size;
+            
+            selectedBooks.forEach(bookId => {
+                pendingChanges.set(bookId, newStatus);
+            });
+            
+            selectedBooks.clear();
+            loadBooksTable();
+            updateStats();
+            
+            showMessage(`Status alterado para ${count} obras`, 'success');
+        }
+
+        // Filter books
+        function filterBooks() {
+            const searchTerm = document.getElementById('adminSearch').value.toLowerCase();
+            const statusFilter = document.getElementById('statusFilter').value;
+            const genreFilter = document.getElementById('genreFilter').value;
+            
+            filteredBooks = books.filter(book => {
+                const matchesSearch = book.title.toLowerCase().includes(searchTerm) ||
+                                    book.author.toLowerCase().includes(searchTerm);
+                
+                const currentStatus = pendingChanges.has(book.id) ? pendingChanges.get(book.id) : book.availability;
+                const matchesStatus = statusFilter === 'all' ||
+                                    (statusFilter === 'available' && currentStatus === 'Disponível') ||
+                                    (statusFilter === 'unavailable' && currentStatus === 'Indisponível');
+                
+                const matchesGenre = genreFilter === 'all' || book.genre === genreFilter;
+                
+                return matchesSearch && matchesStatus && matchesGenre;
+            });
+            
+            loadBooksTable();
+            updateSelectAllCheckbox();
+        }
+
+        // Update stats - CORRIGIDO
+        function updateStats() {
+            let availableCount = 0;
+            let unavailableCount = 0;
+            
+            // Conta considerando as alterações pendentes
+            books.forEach(book => {
+                const currentStatus = pendingChanges.has(book.id) ? pendingChanges.get(book.id) : book.availability;
+                if (currentStatus === 'Disponível') {
+                    availableCount++;
+                } else {
+                    unavailableCount++;
+                }
+            });
+            
+            document.getElementById('availableCount').textContent = availableCount;
+            document.getElementById('unavailableCount').textContent = unavailableCount;
+            document.getElementById('totalCount').textContent = books.length;
+            document.getElementById('changesCount').textContent = pendingChanges.size;
+        }
+
+        // Save changes - CORRIGIDO
+        function saveChanges() {
+            if (pendingChanges.size === 0) {
+                showMessage('Nenhuma alteração pendente para salvar', 'warning');
+                return;
+            }
+            
+            // Apply pending changes to the original data
+            pendingChanges.forEach((newStatus, bookId) => {
+                const book = books.find(b => b.id === bookId);
+                if (book) {
+                    book.availability = newStatus;
+                }
+            });
+            
+            // Save to localStorage
+            localStorage.setItem('booksData', JSON.stringify(books));
+            
+            const changesCount = pendingChanges.size;
+            pendingChanges.clear();
+            
+            loadBooksTable();
+            updateStats();
+            
+            showMessage(`${changesCount} alterações salvas com sucesso! As mudanças serão refletidas nas outras páginas.`, 'success');
+        }
+
+        // Reset data - NOVA FUNÇÃO
+        function resetData() {
+            if (confirm('Tem certeza que deseja restaurar todos os livros para o status original "Disponível"? Esta ação não pode ser desfeita.')) {
+                // Remove localStorage
+                localStorage.removeItem('booksData');
+                
+                // Reset all books to original status
+                books.forEach(book => {
+                    book.availability = 'Disponível';
+                });
+                
+                // Clear pending changes
+                pendingChanges.clear();
+                selectedBooks.clear();
+                
+                loadBooksTable();
+                updateStats();
+                
+                showMessage('Dados restaurados para o estado original!', 'success');
+            }
+        }
+
+        // Show message
+        function showMessage(text, type = 'success') {
+            const container = document.getElementById('messageContainer');
+            const message = document.createElement('div');
+            message.className = `message ${type}`;
+            message.textContent = text;
+            
+            container.appendChild(message);
+            
+            setTimeout(() => {
+                message.classList.add('show');
+            }, 100);
+            
+            setTimeout(() => {
+                message.classList.remove('show');
+                setTimeout(() => {
+                    container.removeChild(message);
+                }, 300);
+            }, 4000);
+        }
+    </script>
+</body>
+</html>

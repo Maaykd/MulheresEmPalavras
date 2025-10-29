@@ -1,8 +1,8 @@
 // ===== Data Store - Banco de Dados Real da Biblioteca =====
 // Dados extraídos do arquivo CSV - 55 obras
 
-// Books data - 55 obras
-const books = [
+// Books data - 55 obras (dados originais)
+const originalBooks = [
     {
         id: 1,
         title: "Girassois Femininos",
@@ -131,7 +131,7 @@ const books = [
         author: "Mônica Dantas",
         year: 2024,
         genre: "Políticas Públicas",
-        synopsis: "Este material constituiu-se com foco na mulher e o delito, após exaustivas (re) leituras das transcrições das entrevistadas. Há um questionamento e duas prerrogativas sobre os motivos que levaram as mulheres a cometer o delito, sendo uma na perspectiva das próprias entrevistadas: por influência daqueles que elas amavam? E a outra, fruto das análises das marcas representativas e diálogos com as teorias que fundamentaram este estudo: “por influência da representação social do amor e do afeto, é que a sociedade patriarcal ensinou e impôs, o papel social da mulher?",
+        synopsis: "Este material constituiu-se com foco na mulher e o delito, após exaustivas (re) leituras das transcrições das entrevistadas. Há um questionamento e duas prerrogativas sobre os motivos que levaram as mulheres a cometer o delito, sendo uma na perspectiva das próprias entrevistadas: por influência daqueles que elas amavam? E a outra, fruto das análises das marcas representativas e diálogos com as teorias que fundamentaram este estudo: por influência da representação social do amor e do afeto, é que a sociedade patriarcal ensinou e impôs, o papel social da mulher?",
         image_url: "https://loja.giostrieditora.com.br/image/cache/catalog/agosto/capareleaseoamorencarceramonicadantas16x23aprovada-500x500.jpg",
         availability: "Disponível",
         library_url: "#"
@@ -362,7 +362,7 @@ const books = [
         author: "Stella Wilderom",
         year: 2022,
         genre: "Humanidades",
-        synopsis: "A obra busca ajudar a informar mulheres mais jovens sobre os impactos de suas escolhas e, as chamadas, mães geriátricas, como fazer essa difícil jornada com mais leveza. Ao resolver ter filhos aos 36 anos, Stella Wilderom descobriu os impactos de nunca ter sido orientada sobre todas as questões que envolvem maternidade tardia e, por isso, nesta obra, relata de forma transparente e honesta os desafios da gravidez “tardia”.",
+        synopsis: "A obra busca ajudar a informar mulheres mais jovens sobre os impactos de suas escolhas e, as chamadas, mães geriátricas, como fazer essa difícil jornada com mais leveza. Ao resolver ter filhos aos 36 anos, Stella Wilderom descobriu os impactos de nunca ter sido orientada sobre todas as questões que envolvem maternidade tardia e, por isso, nesta obra, relata de forma transparente e honesta os desafios da gravidez tardia.",
         image_url: "https://loja.giostrieditora.com.br/image/cache/catalog/MAR%C3%87O%202023_/capareleasedesculpaatraseistellawilderom14x21aprovada-500x500.jpg",
         availability: "Disponível",
         library_url: "#"
@@ -395,7 +395,7 @@ const books = [
         author: "Alex Giostri",
         year: 2023,
         genre: "Pedagogia",
-        synopsis: "A vida moderna nos leva às formas, às regras, aos manuais, como se o “correto” existisse. Não que não exista. Naturalmente, o tradicional tem a sua importância, mas no fim das contas e no universo das artes e da criação o que vale é a competência e aptidão de cada criador, de cada artista. Neste sentido, o que podemos pensar é que devem ser estudadas as formas, as regras, e também os manuais. No entanto, é na compreensão do todo, de todas as literaturas possíveis, é na vivência interna e externa de cada indivíduo que se estabelecerá a visão de mundo, consequentemente, dessa maneira de ver e viver a vida se dará o autor e tudo o que se quer contar. O melhor caminho para todo e qualquer autor é primeiramente adquirir a cultura de base, a informação, é ter um claro entendimento de que a sua matéria-prima é o humano e por isso o seu olhar deve ser o mais puro possível. Se o autor estiver plastificado em sua bolha julgadora e dona da verdade, o mesmo não poderá acessar o outro lado da história. E quem perderá por fim será o leitor, afinal não se lê apenas livros, pessoas podem ser lidas também.",
+        synopsis: "A vida moderna nos leva às formas, às regras, aos manuais, como se o correto existisse. Não que não exista. Naturalmente, o tradicional tem a sua importância, mas no fim das contas e no universo das artes e da criação o que vale é a competência e aptidão de cada criador, de cada artista. Neste sentido, o que podemos pensar é que devem ser estudadas as formas, as regras, e também os manuais. No entanto, é na compreensão do todo, de todas as literaturas possíveis, é na vivência interna e externa de cada indivíduo que se estabelecerá a visão de mundo, consequentemente, dessa maneira de ver e viver a vida se dará o autor e tudo o que se quer contar. O melhor caminho para todo e qualquer autor é primeiramente adquirir a cultura de base, a informação, é ter um claro entendimento de que a sua matéria-prima é o humano e por isso o seu olhar deve ser o mais puro possível. Se o autor estiver plastificado em sua bolha julgadora e dona da verdade, o mesmo não poderá acessar o outro lado da história. E quem perderá por fim será o leitor, afinal não se lê apenas livros, pessoas podem ser lidas também.",
         image_url: "https://loja.giostrieditora.com.br/image/cache/catalog/front/978-85-60157-75-4-500x500.jpg",
         availability: "Disponível",
         library_url: "#"
@@ -439,7 +439,7 @@ const books = [
         author: "Marisa Ferrari Monteiro",
         year: 2022,
         genre: "Romance",
-        synopsis: "O que pode haver em comum entre um poeta e um soldado? No caso dos gêmeos Giordano e Giuseppe, além do rosto, um segredo e uma grande dor. Arrabal (codinome de Giuseppe) é o cavaleiro dos versos, o poeta e ator saltimbanco, que viaja com sua trupe de atores pelas cidades, interpretando as máscaras da Commedia dell’Arte. Ele divide um passado complicado com o irmão Giordano, esse o herói da força, o alto oficial do exército napolitano, o guerreiro, movido pela honra e pelo desejo de vitória. Por serem espíritos tão diversos, evitam a convivência, mas circunstâncias os obrigam a, pela primeira vez em muitos anos, se encontrarem em sua Nápoles natal e o confronto, inevitável, logo se transforma em uma disputa à qual apenas um dos dois poderá sobreviver.",
+        synopsis: "O que pode haver em comum entre um poeta e um soldado? No caso dos gêmeos Giordano e Giuseppe, além do rosto, um segredo e uma grande dor. Arrabal (codinome de Giuseppe) é o cavaleiro dos versos, o poeta e ator saltimbanco, que viaja com sua trupe de atores pelas cidades, interpretando as máscaras da Commedia dell'Arte. Ele divide um passado complicado com o irmão Giordano, esse o herói da força, o alto oficial do exército napolitano, o guerreiro, movido pela honra e pelo desejo de vitória. Por serem espíritos tão diversos, evitam a convivência, mas circunstâncias os obrigam a, pela primeira vez em muitos anos, se encontrarem em sua Nápoles natal e o confronto, inevitável, logo se transforma em uma disputa à qual apenas um dos dois poderá sobreviver.",
         image_url: "https://loja.giostrieditora.com.br/image/cache/catalog/agosto/capareleasearrabalmarisaferrarimonteiro16x23aprovada-500x500.jpg",
         availability: "Disponível",
         library_url: "#"
@@ -496,6 +496,7 @@ const books = [
         genre: "Psicologia",
         synopsis: "A obra traz o entendimento de que o cérebro humano é um depósito de informações fragmentadas, as quais acabam por se tornarem motivos de tantos equívocos e desequilíbrios neuro emocionais. Como solução, Marcos Cazuza propõe ao leitor/a uma libertação em relação aos maus efeitos interpretativos, também denominado ego, o senhor dos sofrimentos. O autor, para isso, evidencia o que sempre esteve diante dos nossos olhos, mas que não foi observado atentamente. Trata-se, por fim, de uma obra que possibilita uma reflexão sobre o todo que nos rodeia, sobretudo a si mesmo",
         image_url: "https://loja.giostrieditora.com.br/image/cache/catalog/0%20A%2010%202022/0001%20San%20Eventos/capa_release_o%20fim%20do%20ego_marcos%20roberto%20de%20souza_aprovacao%20final-500x500.jpg",
+        availability: "Disponível",
         library_url: "#"
     },
     {
@@ -526,7 +527,7 @@ const books = [
         author: "Débora Campello",
         year: 2022,
         genre: "Romance",
-        synopsis: "Um crime misterioso é o estopim para um caminho de descobertas sobre o passado mal resolvido de três amigos de infância. Os amigos, Irene, Racine e Levi, um “Bande à Part” tupiniquim, como Irene os define, acabam envolvidos na empreitada em busca de um assassino e, nesta missão, ressignificam o próprio passado alterando assim, a vida que lhes resta. Ao longo da trama nossa anti-heroína Irene Marín, guiada pelo brilhante Santiago Eugênio Torres, coloca em xeque suas certezas, conduzindo também você a fazer questionamentos sobre a natureza humana e sua fenomenologia.",
+        synopsis: "Um crime misterioso é o estopim para um caminho de descobertas sobre o passado mal resolvido de três amigos de infância. Os amigos, Irene, Racine e Levi, um Bande à Part tupiniquim, como Irene os define, acabam envolvidos na empreitada em busca de um assassino e, nesta missão, ressignificam o próprio passado alterando assim, a vida que lhes resta. Ao longo da trama nossa anti-heroína Irene Marín, guiada pelo brilhante Santiago Eugênio Torres, coloca em xeque suas certezas, conduzindo também você a fazer questionamentos sobre a natureza humana e sua fenomenologia.",
         image_url: "https://loja.giostrieditora.com.br/image/cache/catalog/agosto/capareleaseegressoseperdidosdeboracampello16x23aprovada-500x500.jpg",
         availability: "Disponível",
         library_url: "#"
@@ -570,7 +571,7 @@ const books = [
         author: "Graça Lopes",
         year: 2023,
         genre: "Poesia",
-        synopsis: "Os poemas de Graça Lopes estão repletos de olhos que veem. A palavra “olhos” aparece mais de 300 vezes. E somos convidados a ver os versos, a unir versos, a rever nossas próprias perplexidades. Dizem também que os olhos são nossa abertura para o pensamento filosófico. A admiração consiste em mirar de perto e ficar perplexo com o que se vê.",
+        synopsis: "Os poemas de Graça Lopes estão repletos de olhos que veem. A palavra olhos aparece mais de 300 vezes. E somos convidados a ver os versos, a unir versos, a rever nossas próprias perplexidades. Dizem também que os olhos são nossa abertura para o pensamento filosófico. A admiração consiste em mirar de perto e ficar perplexo com o que se vê.",
         image_url: "https://loja.giostrieditora.com.br/image/cache/catalog/agosto/capareleaseperplexografiasminimasgracalopes16x23aprovada-500x500.jpg",
         availability: "Disponível",
         library_url: "#"
@@ -610,8 +611,30 @@ const books = [
     }
 ];
 
-// Authors data - extraída automaticamente dos livros
-// Biografias específicas de cada autor/autora
+// ===== FUNÇÃO PARA CARREGAR DADOS DO LOCALSTORAGE OU ORIGINAIS =====
+function loadBooksData() {
+    try {
+        const savedData = localStorage.getItem('booksData');
+        if (savedData) {
+            const parsedData = JSON.parse(savedData);
+            // Verifica se os dados salvos são válidos
+            if (Array.isArray(parsedData) && parsedData.length > 0) {
+                console.log('📚 Carregando dados salvos do localStorage');
+                return parsedData;
+            }
+        }
+    } catch (error) {
+        console.warn('Erro ao carregar dados do localStorage:', error);
+    }
+    
+    console.log('📚 Carregando dados originais');
+    return [...originalBooks];
+}
+
+// Carrega os dados (localStorage ou originais)
+const books = loadBooksData();
+
+// Authors data - usando biografias específicas
 const authorBiographies = {
     "Luís de Oliveira": "Luís de Oliveira é um escritor, poeta e professor brasileiro nascido em 20 de julho de 1995, na cidade de Pereira Barreto, interior de São Paulo. Formado em Licenciatura e Bacharelado em Educação Física, iniciou sua trajetória literária em 2009 e, desde então, tem se destacado no cenário literário nacional. É coordenador do projeto Letras ao Vento, que incentiva a leitura entre crianças e adolescentes.",
     
@@ -710,7 +733,6 @@ const authorBiographies = {
     "Marcelo Rocha": "Marcelo Rocha é escritor brasileiro que cria narrativas urbanas intensas sobre violência, relacionamentos e fragilidades humanas. Suas obras exploram personagens complexos unidos pela brutalidade da vida contemporânea."
 };
 
-// Authors data - usando biografias específicas
 const authorsMap = new Map();
 
 books.forEach(book => {
@@ -735,7 +757,29 @@ const genres = [
 // Years for filters
 const years = [...new Set(books.map(book => book.year))].sort((a, b) => b - a);
 
+// ===== FUNÇÃO PARA SINCRONIZAR DADOS ENTRE PÁGINAS =====
+function syncBooksData() {
+    // Escuta mudanças no localStorage para sincronizar dados
+    window.addEventListener('storage', function(e) {
+        if (e.key === 'booksData') {
+            // Recarrega a página para atualizar os dados
+            window.location.reload();
+        }
+    });
+}
+
+// Inicializar sincronização
+document.addEventListener('DOMContentLoaded', syncBooksData);
+
 // Log summary
 console.log(`📚 Biblioteca carregada: ${books.length} livros, ${authors.length} autores/as`);
 console.log(`📖 Gêneros disponíveis: ${genres.length - 1}`);
 console.log(`📅 Anos: ${Math.min(...years)} - ${Math.max(...years)}`);
+
+// Verificar se existem dados salvos
+const savedData = localStorage.getItem('booksData');
+if (savedData) {
+    console.log('💾 Dados personalizados encontrados no localStorage');
+} else {
+    console.log('📄 Usando dados originais');
+}
