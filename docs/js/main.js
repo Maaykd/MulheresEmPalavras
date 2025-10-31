@@ -177,7 +177,7 @@ function createBookCard(book) {
                     <span class="book-availability availability-${availabilityClass}">
                         ${book.availability}
                     </span>
-                    <a href="https://forms.office.com/Pages/DesignPageV2.aspx?origin=NeoPortalPage&subpage=design&id=eLGl-_E6IESWa79RY-ax2m3ke_MyDQ5Goc-3jD5vE_1UMUhWN1E5RlNYUDI5S041SjU0S0dOMzlHVy4u" 
+                    <a href="https://forms.office.com/r/gsfJVRQXgB" 
                        target="_blank" 
                        class="btn-request-book"
                        onclick="event.stopPropagation()">
@@ -252,7 +252,7 @@ function openBookModal(bookIndex) {
                 </span>
             </div>
             <div class="book-modal-actions">
-                <a href="https://forms.office.com/Pages/DesignPageV2.aspx?origin=NeoPortalPage&subpage=design&id=eLGl-_E6IESWa79RY-ax2m3ke_MyDQ5Goc-3jD5vE_1UMUhWN1E5RlNYUDI5S041SjU0S0dOMzlHVy4u" 
+                <a href="https://forms.office.com/r/gsfJVRQXgB" 
                    target="_blank" class="btn-library">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <line x1="22" y1="2" x2="11" y2="13"></line>
