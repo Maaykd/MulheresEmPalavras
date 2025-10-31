@@ -146,8 +146,7 @@ function createLoginModal() {
                 <div class="login-info">
                     <p>🔒 Acesso restrito a administradores</p>
                     <p style="font-size: 0.75rem; color: #9ca3af; margin-top: 0.5rem;">
-                        Usuário: admin<br>
-                        Senha: ministeriomulheres2025
+                       
                     </p>
                 </div>
             </div>
